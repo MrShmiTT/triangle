@@ -4,16 +4,18 @@ class Triangle {
     private Point a;
     private Point b;
     private Point c;
-    double side1;
-    double side2;
-    double side3;
 
     public Triangle(Point a, Point b, Point c) {
+
+        double length1 = Math.sqrt(((Math.pow(b.getX() - a.getX(), 2)) + (Math.pow(b.getY() - a.getY(), 2))));
+        double length2 = Math.sqrt(((Math.pow(c.getX() - b.getX(), 2)) + (Math.pow(c.getY() - b.getY(), 2))));
+        double length3 = Math.sqrt(((Math.pow(a.getX() - c.getX(), 2)) + (Math.pow(a.getY() - c.getY(), 2))));
+
+        if (((length1 + length2) <= length3) || ((length1 + length3) <= length2) || ((length2 + length3) <= length1))
+            throw new RuntimeException("Triangle is degenerative");
+
         if (a == null || b == null || c == null)
             throw new RuntimeException("Arguments can't be null");
-
-        if (((side1 + side2) < side3) || ((side1 + side3) < side2) || ((side2 + side3) < side1))
-            throw new RuntimeException("Triangle is degenerative");
 
         this.a = a;
         this.b = b;
