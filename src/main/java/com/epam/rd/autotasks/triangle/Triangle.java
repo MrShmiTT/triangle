@@ -6,6 +6,8 @@ class Triangle {
     private Point c;
 
     public Triangle(Point a, Point b, Point c) {
+        if (a == null || b == null || c == null)
+            throw new RuntimeException("Arguments can't be null");
 
         double length1 = Math.sqrt(((Math.pow(b.getX() - a.getX(), 2)) + (Math.pow(b.getY() - a.getY(), 2))));
         double length2 = Math.sqrt(((Math.pow(c.getX() - b.getX(), 2)) + (Math.pow(c.getY() - b.getY(), 2))));
@@ -13,9 +15,6 @@ class Triangle {
 
         if (((length1 + length2) <= length3) || ((length1 + length3) <= length2) || ((length2 + length3) <= length1))
             throw new RuntimeException("Triangle is degenerative");
-
-        if (a == null || b == null || c == null)
-            throw new RuntimeException("Arguments can't be null");
 
         this.a = a;
         this.b = b;
@@ -32,4 +31,3 @@ class Triangle {
         return new Point(xc, yc);
     }
 }
-
