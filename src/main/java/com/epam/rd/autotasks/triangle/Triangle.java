@@ -21,8 +21,7 @@ class Triangle {
     }
 
     public double area() {
-        double p = (side1 + side2 + side3) / 2;
-        return Math.sqrt(p * ((p - side1) * (p - side2) * (p - side3)));
+        return Math.abs((a.getX() - c.getX()) * (b.getY() - a.getY()) - (a.getX() - b.getX()) * (c.getY() - a.getY())) * 0.5;
     }
 
     public Point centroid() {
